@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gozal Tea - Start Fresh Stay Inspired</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles for the luxurious feel */
+        body {
+          font-family: 'Inter', sans-serif;
+          background-color: #FDFBF6; /* Soft cream background */
+          color: #333;
+          line-height: 1.7; /* Slightly increased line height */
+          scroll-behavior: smooth; /* Smooth scrolling for nav links */
+        }
+
+        /* Define the total loop duration for the logo animation */
+        :root {
+          --total-loop-duration: 15s; /* Total animation loop duration */
+        }
+
+        /* Keyframes for the Gozal Seal's blooming emergence and full lifecycle */
+        @keyframes sealAnimation {
+          0% {
+            opacity: 0;
+            transform: scale(0.5) rotate(0deg);
+            filter: drop-shadow(0 0 0px rgba(212, 175, 55, 0));
+          }
+          4.67% { /* 0.7s */
+            opacity: 1;
+            transform: scale(1.05) rotate(5deg);
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
+          }
+          6.67% { /* 1.0s */
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.4));
+          }
+          93.33% { /* 14.0s */
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+            filter: drop_shadow(0 0 5px rgba(212, 175, 55, 0.4));
+          }
+          100% { /* 15.0s */
+            opacity: 0;
+            transform: scale(0.95) rotate(0deg); /* Slight scale down on exit */
+          }
+        }
+
+        /* Keyframes for elegant straight text slide-in and full lifecycle */
+        @keyframes gozalTeaStraightAnimation {
+          0%, 6.67% { /* 1.0s */
+            opacity: 0;
+            transform: translateX(-100px); /* Start off-screen left */
+            text-shadow: none;
+          }
+          13.33% { /* 2.0s */
+            opacity: 1;
+            transform: translateX(5px); /* Overshoot slightly */
+            text-shadow: 0 0 10px rgba(0,0,0,0.4);
+          }
+          15% { /* 2.25s */
+            opacity: 1;
+            transform: translateX(0); /* Settle */
+            text-shadow: 0 0 5px rgba(0,0,0,0.2);
+          }
+          93.33% { /* 14.0s */
+            opacity: 1;
+            transform: translateX(0);
+            text-shadow: 0 0 5px rgba(0,0,0,0.2);
+          }
+          100% { /* 15.0s */
+            opacity: 0;
+            transform: translateX(0);
+            text-shadow: none;
+          }
+        }
+
+        /* Keyframes for subtle tagline slide-in from bottom and full lifecycle */
+        @keyframes wellingtonTextAnimation {
+          0%, 14.67% { /* 2.2s */
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          21.33% { /* 3.2s */
+            opacity: 1;
+            transform: translateY(0);
+          }
+          34.67% { /* 5.2s */
+            opacity: 1;
+            transform: translateY(0);
+          }
+          39.33% { /* 5.9s */
+            opacity: 0;
+            transform: translateY(0);
+          }
+          100% { /* 15.0s */
+            opacity: 0;
+            transform: translateY(0);
+          }
+        }
+
+        /* Keyframes for golden aura expansion and full lifecycle */
+        @keyframes goldenAuraAnimation {
+          0%, 20% { /* 3.0s */
+            r: 0;
+            opacity: 0;
+          }
+          33.33% { /* 5.0s */
+            r: 150px;
+            opacity: 1;
+          }
+          40% { /* 6.0s */
+            r: 200px;
+            opacity: 0;
+          }
+          100% { /* 15.0s */
+            r: 0;
+            opacity: 0;
+          }
+        }
+
+        /* Keyframes for outer circle drawing and full lifecycle */
+        @keyframes outerCircleAnimation {
+          0% {
+            stroke-dashoffset: 973.89; /* Starts hidden */
+            opacity: 0;
+          }
+          23.33% { /* 3.5s */
+            opacity: 0;
+          }
+          30% { /* 4.5s */
+            stroke-dashoffset: 0; /* Drawn */
+            opacity: 1;
+          }
+          93.33% { /* 14.0s */
+            opacity: 1;
+          }
+          100% { /* 15.0s */
+            stroke-dashoffset: 0;
+            opacity: 0; /* Fade out */
+          }
+        }
+
+        /* Keyframes for stardust movement and full lifecycle */
+        @keyframes stardustCircleAnimation {
+          0% {
+            opacity: 0;
+          }
+          25.33% { /* 3.8s */
+            opacity: 0;
+          }
+          25.34% { /* Just after hidden, appear instantly */
+            opacity: 1;
+          }
+          93.33% { /* 14.0s */
+            opacity: 1; /* Hold */
+          }
+          100% { /* 15.0s */
+            opacity: 0; /* Fade out */
+          }
+        }
+
+        /* Keyframes for continuous stardust flow (applied separately) */
+        @keyframes stardustFlow {
+          0% { stroke-dashoffset: 0; }
+          100% { stroke-dashoffset: 973.89; } /* Move full circumference */
+        }
+
+        /* NEW: Keyframes for U-shaped slogan animation */
+        @keyframes uSloganAnimation {
+          0%, 40% { /* 6.0s - before fade in */
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          46.67% { /* 7.0s - fully faded in and scaled */
+            opacity: 1;
+            transform: scale(1);
+          }
+          86.67% { /* 13.0s - hold */
+            opacity: 1;
+            transform: scale(1);
+          }
+          93.33% { /* 14.0s */
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+
+        /* Keyframes for EST 1970 text animation */
+        @keyframes est1970Animation {
+          0%, 46% { /* Start hidden, slightly after slogan begins to appear */
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          50% { /* Fully visible */
+            opacity: 1;
+            transform: translateY(0);
+          }
+          85% { /* Hold visible */
+            opacity: 1;
+            transform: translateY(0);
+          }
+          90% { /* Start fading out */
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          100% { /* Fully hidden */
+            opacity: 0;
+          }
+        }
+
+
+        /* Apply animations to elements */
+        .gozal-seal {
+          animation: sealAnimation var(--total-loop-duration) ease-in-out infinite;
+        }
+
+        .gozal-tea-straight-text {
+          animation: gozalTeaStraightAnimation var(--total-loop-duration) cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        }
+
+        .wellington-text {
+          animation: wellingtonTextAnimation var(--total-loop-duration) ease-out infinite;
+        }
+
+        .outer-circle {
+          animation: outerCircleAnimation var(--total-loop-duration) ease-in-out infinite;
+        }
+
+        .stardust-circle {
+          animation: stardustCircleAnimation var(--total-loop-duration) linear infinite,
+                     stardustFlow 3s linear infinite; /* Separate animation for continuous flow */
+        }
+
+        .golden-aura {
+          animation: goldenAuraAnimation var(--total-loop-duration) ease-out infinite;
+        }
+
+        /* NEW SLOGAN ANIMATIONS */
+        .u-slogan-text {
+          animation: uSloganAnimation var(--total-loop-duration) ease-out infinite;
+          transform-origin: 50% 50%; /* Ensure scale animation is centered */
+        }
+
+        .est-1970-text {
+            animation: est1970Animation var(--total-loop-duration) ease-out infinite;
+        }
+
+        /* Animation for the logo group - REMOVED ROTATION */
+        /* @keyframes logoRotate {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        } */
+
+        .animated-logo {
+          /* animation: logoRotate 20s linear infinite; */ /* Removed rotation animation */
+          transform-origin: 200px 80px; /* Center of the logo */
+        }
+
+        /* General Styling for Premium Feel */
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem; /* Slightly larger for header */
+            font-weight: 700;
+            color: #1A4314; /* Deep emerald green */
+            letter-spacing: 0.08em; /* More pronounced letter spacing */
+            display: flex; /* Enable flex for icon alignment */
+            align-items: center;
+            gap: 0.5rem; /* Space between icon and text */
+        }
+
+        .nav-link {
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            color: #555;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            padding-bottom: 0.25rem;
+            font-size: 1.1rem; /* Slightly larger nav links */
+        }
+        .nav-link:hover {
+            color: #D4AF37; /* Gold on hover */
+            transform: translateY(-2px);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #D4AF37; /* Gold underline */
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hero-section {
+            min-height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            align-items: center;
+            justify-content: center;
+            background-color: #FDFBF6; /* Soft cream */
+            padding-top: 6rem; /* Account for fixed header */
+            padding-bottom: 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden; /* Hide overflow from animations */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroFadeIn 1s ease-out forwards;
+            animation-delay: 0.5s; /* Delay after page load */
+            perspective: 1px;
+            transform-style: preserve-3d;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            transform-origin: center center;
+            transform: translateZ(-1px) scale(2); /* Moves it "further" and scales up to fill */
+            pointer-events: none; /* Allow interaction with elements above */
+            will-change: transform; /* Optimize for animation */
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the entire container */
+            filter: brightness(0.6); /* Darken the image for text readability */
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* Dark overlay */
+            z-index: 1; /* Ensure it's above the image but below content */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Ensure content is above the image and overlay */
+            color: #FFFFFF; /* White text for better contrast on image */
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5); /* Stronger shadow for readability */
+        }
+
+        .hero-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem; /* Slightly smaller for better fit with image */
+            font-weight: 700;
+            color: #FFFFFF; /* White text for image background */
+            letter-spacing: 0.1em; /* More pronounced letter spacing */
+            line-height: 1.05; /* Tighter line height for large text */
+            margin-bottom: 0.5rem; /* Reduced margin */
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.35); /* More prominent text shadow */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroTextSlideIn 1s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        @keyframes heroFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subheading {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.4rem; /* Slightly smaller for better fit with image */
+            color: #E0E0E0; /* Lighter white for subheading */
+            margin-bottom: 2rem; /* Reduced margin */
+            max-width: 45rem; /* Slightly narrower subtitle */
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroTextSlideIn 1s ease-out forwards;
+            animation-delay: 1.2s;
+        }
+
+        .hero-section .svg-container { /* Targeting the SVG wrapper */
+            margin-bottom: 1rem; /* Adjusted space below logo to reduce gap */
+            opacity: 0;
+            transform: scale(0.9);
+            animation: heroLogoScaleIn 1.5s ease-out forwards;
+            animation-delay: 1.5s;
+        }
+
+        /* Adjust SVG colors for dark background */
+        .hero-section .gozal-seal path {
+            fill: #FDFBF6; /* Light cream for seal */
+            stroke: #FDFBF6;
+        }
+        .hero-section .gozal-seal circle {
+            stroke: #D4AF37; /* Gold for inner circle */
+        }
+        .hero-section .gozal-seal path[stroke="#6B4423"] {
+            stroke: #FDFBF6; /* Light cream for inner lines */
+        }
+        .hero-section .gozal-tea-straight-text {
+            fill: #FDFBF6; /* Light cream for text */
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5); /* Add shadow for text */
+        }
+        .hero-section .wellington-text {
+            fill: #E0E0E0; /* Lighter white for sub-text */
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5); /* Add shadow for text */
+        }
+        .hero-section .outer-circle {
+            stroke: #D4AF37; /* Gold for outer circle */
+        }
+        .hero-section .stardust-circle {
+            stroke: #FDFBF6; /* Light cream for stardust */
+        }
+        .hero-section .u-slogan-text {
+            fill: #D4AF37; /* Gold for slogan */
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5); /* Add shadow for text */
+        }
+
+
+        @keyframes heroLogoScaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+
+        .explore-button {
+            background: linear-gradient(to right, #D4AF37, #C0A040); /* Gold gradient button */
+            border: none;
+            padding: 1rem 3rem; /* Larger button */
+            border-radius: 9999px; /* Fully rounded */
+            font-weight: 700;
+            font-size: 1.15rem; /* Larger font */
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2); /* More prominent shadow */
+            color: #FFFFFF; /* White text for button */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroTextSlideIn 1s ease-out forwards;
+            animation-delay: 1.4s;
+        }
+        .explore-button:hover {
+            background: linear-gradient(to right, #C0A040, #D4AF37); /* Reverse gradient on hover */
+            transform: translateY(-4px) scale(1.02); /* More pronounced lift and slight scale */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem; /* Even larger section headings */
+            font-weight: 700;
+            color: #1A4314; /* Deep emerald green */
+            margin-bottom: 4rem; /* More space */
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.75rem; /* More padding for underline */
+            letter-spacing: 0.06em;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            width: 100px; /* Longer underline */
+            height: 4px; /* Thicker underline */
+            background-color: #D4AF37; /* Gold underline */
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .content-section {
+            background-color: #ffffff; /* White background for content blocks */
+            padding: 6rem 4rem; /* Even more padding */
+            margin-bottom: 5rem; /* More space between sections */
+            border-radius: 1.5rem; /* Even more rounded corners */
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1); /* Stronger, softer shadow */
+            max-width: 78rem; /* Wider content area */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content-section.dark-bg {
+            background-color: #1A4314; /* Deep emerald green background */
+            color: #FDFBF6; /* Light text for contrast */
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3); /* Stronger shadow on dark background */
+        }
+        .content-section.dark-bg .section-heading {
+            color: #FDFBF6; /* Light heading on dark background */
+        }
+        .content-section.dark-bg .section-heading::after {
+            background-color: #D4AF37; /* Gold underline */
+        }
+        .content-section.dark-bg p {
+            color: #E0E0E0; /* Lighter body text */
+        }
+
+        .product-card {
+            background-color: #FDFBF6; /* Soft cream for product cards */
+            padding: 3rem; /* More padding */
+            border-radius: 1rem; /* More rounded corners */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* Stronger shadow */
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease; /* Slower transition */
+        }
+        .product-card:hover {
+            transform: translateY(-12px); /* More pronounced lift on hover */
+            box-shadow: 0 18px 40px rgba(0,0,0,0.2); /* Stronger, softer shadow */
+        }
+        .product-card img {
+            border-radius: 0.75rem; /* More rounded image corners */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Stronger image shadow */
+            width: 100%; /* Ensure responsiveness */
+            height: 200px; /* Fixed height for consistency */
+            object-fit: contain; /* Use 'contain' to show full image without cropping */
+            margin-bottom: 2rem; /* More space below image */
+            background-color: #FFFFFF; /* Ensure image background is white for transparency */
+            padding: 1rem; /* Add some padding around the image for better presentation */
+        }
+        .product-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem; /* Even larger product titles */
+            font-weight: 700;
+            color: #1A4314; /* Deep emerald green */
+            margin-bottom: 1rem;
+            letter-spacing: 0.03em;
+        }
+        .product-card p {
+            font-size: 1.15rem; /* Slightly larger product description */
+            color: #666;
+            margin-bottom: 2rem; /* More space */
+            line-height: 1.7;
+        }
+        .product-card button {
+            background: linear-gradient(to right, #1A4314, #2E8B57); /* Green gradient button */
+            border: none;
+            padding: 1rem 2.5rem; /* Larger button */
+            border-radius: 9999px; /* Fully rounded */
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            color: #FFFFFF; /* White text for button */
+        }
+        .product-card button:hover {
+            background: linear-gradient(to right, #2E8B57, #1A4314); /* Reverse gradient on hover */
+            transform: translateY(-3px); /* More pronounced lift */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            border: 1px solid #ddd;
+            padding: 1rem 1.5rem; /* Larger padding */
+            border-radius: 0.75rem; /* More rounded corners */
+            font-size: 1.15rem; /* Larger font */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #FDFBF6; /* Match body background for subtle look */
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #D4AF37; /* Gold focus border */
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.3); /* More prominent gold glow */
+            outline: none;
+        }
+        .contact-form label {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 0.75rem; /* More space */
+            font-size: 1.15rem; /* Larger label font */
+        }
+        .contact-form button {
+            background: linear-gradient(to right, #D4AF37, #C0A040); /* Gold gradient button */
+            border: none;
+            padding: 1rem 3rem; /* Larger button */
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            color: #FFFFFF; /* White text for button */
+        }
+        .contact-form button:hover {
+            background: linear-gradient(to right, #C0A040, #D4AF37);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Styling for the success message */
+        .success-message {
+            background-color: #d4edda; /* Light green background */
+            color: #155724; /* Dark green text */
+            border: 1px solid #c3e6cb;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInMessage 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeInMessage {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer-section {
+            background-color: #2C2C2C; /* Dark charcoal footer */
+            color: #E0E0E0; /* Lighter text */
+            padding: 4rem 1rem; /* More padding */
+            text-align: center;
+            font-size: 1rem; /* Slightly larger footer text */
+        }
+        .footer-section p {
+            margin-bottom: 0.75rem;
+        }
+        .footer-section a {
+            color: #D4AF37; /* Gold links in footer */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover {
+            color: #FDFBF6; /* Lighter gold on hover */
+        }
+
+        /* Arabic text styling */
+        .rtl-text {
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 1.8rem;
+            }
+            .nav-link {
+                font-size: 0.9rem;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            .hero-heading {
+                font-size: 2.8rem; /* Adjusted for mobile */
+                letter-spacing: 0.05em;
+            }
+            .hero-subheading {
+                font-size: 1.1rem; /* Adjusted for mobile */
+            }
+            .section-heading {
+                font-size: 2.5rem;
+            }
+            .content-section {
+                padding: 3rem 1.5rem;
+                margin-bottom: 3rem;
+            }
+            .product-card {
+                padding: 1.5rem;
+            }
+            .product-card h3 {
+                font-size: 1.5rem;
+            }
+            .product-card p {
+                font-size: 1rem;
+            }
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 1rem;
+                padding: 0.7rem 1rem;
+            }
+            .contact-form label {
+                font-size: 1rem;
+            }
+            .contact-form button {
+                padding: 0.8rem 2rem;
+            }
+            .footer-section {
+                padding: 2rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <header class="bg-white bg-opacity-95 shadow-sm py-4 px-8 flex justify-between items-center fixed top-0 left-0 w-full z-10 backdrop-blur-sm">
+        <div class="text-2xl font-bold header-title">
+            Gozal Tea
+        </div>
+        <nav>
+            <ul class="flex space-x-8">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#heritage" class="nav-link">Our Heritage</a></li>
+                <li><a href="#about" class="nav-link">Our Story</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-image-container">
+            <img src="https://images.unsplash.com/photo-1690107644706-35e0f1cd0051?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="A field of green tea plants with a blurry background" class="hero-image">
+            <div class="image-overlay"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 hero-content">
+            <div class="relative w-full max-w-md mx-auto mb-1 svg-container">
+                <svg
+                    viewBox="0 0 400 480"
+                    class="w-full h-auto"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <defs>
+                        <radialGradient id="goldenAura" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                            <stop offset="0%" stop-color="rgba(212, 175, 55, 0.8)" />
+                            <stop offset="70%" stop-color="rgba(212, 175, 55, 0.3)" />
+                            <stop offset="100%" stop-color="rgba(212, 175, 55, 0)" />
+                        </radialGradient>
+                        <path id="gozalTeaStraightPath" d="M 70 195 L 330 195" fill="none" />
+                        <path id="uShapeSloganPath" d="M 70 230 Q 200 295 330 230" fill="none" />
+                    </defs>
+
+                    <g class="gozal-seal" transform-origin="200px 80px" transform="scale(0.5) translate(0, -10)">
+                        <g class="animated-logo">
+                            <path d="M 150 120 L 200 50 L 250 120 Z" fill="#1A4314" stroke="#D4AF37" stroke-width="1" stroke-linejoin="round" />
+                            <path d="M 185 65 L 200 50 L 215 65 Z" fill="#FDFBF6" stroke="#D4AF37" stroke-width="0.5" stroke-linejoin="round" />
+
+                            <path d="M 120 130 L 160 80 L 190 130 Z" fill="#1A4314" stroke="#D4AF37" stroke-width="1" stroke-linejoin="round" />
+                            <path d="M 148 92 L 160 80 L 172 92 Z" fill="#FDFBF6" stroke="#D4AF37" stroke-width="0.5" stroke-linejoin="round" />
+
+                            <path d="M 210 130 L 240 90 L 270 130 Z" fill="#1A4314" stroke="#D4AF37" stroke-width="1" stroke-linejoin="round" />
+                            <path d="M 233 100 L 240 90 L 247 100 Z" fill="#FDFBF6" stroke="#D4AF37" stroke-width="0.5" stroke-linejoin="round" />
+
+                            <path d="M 100 140 L 120 110 L 140 140 Z" fill="#1A4314" opacity="0.7" stroke="#D4AF37" stroke-width="0.5" stroke-linejoin="round" />
+                            <path d="M 115 118 L 120 110 L 125 118 Z" fill="#FDFBF6" opacity="0.7" stroke="#D4AF37" stroke-width="0.25" stroke-linejoin="round" />
+
+                            <line x1="80" y1="150" x2="320" y2="150" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" />
+                        </g>
+                    </g>
+
+                    <text
+                        font-family="Playfair Display, serif"
+                        font-size="45"
+                        font-weight="bold"
+                        fill="#FDFBF6" /* Adjusted to light cream */
+                        class="gozal-tea-straight-text"
+                    >
+                        <textPath href="#gozalTeaStraightPath" startOffset="50%" text-anchor="middle">
+                            Gozal Tea
+                        </textPath>
+                    </text>
+
+                    <text
+                        x="200"
+                        y="240"
+                        font-family="Lato Light, sans-serif"
+                        font-size="20"
+                        text-anchor="middle"
+                        fill="#E0E0E0" /* Adjusted to lighter white */
+                        class="wellington-text"
+                    >
+                        Wellington Maketing FZE
+                    </text>
+
+                    <circle
+                        cx="200"
+                        cy="160"
+                        r="155"
+                        fill="none"
+                        stroke="#D4AF37"
+                        stroke-width="1.5"
+                        class="outer-circle"
+                        stroke-dasharray="973.89"
+                        stroke-dashoffset="973.89"
+                    />
+
+                    <circle
+                        cx="200"
+                        cy="160"
+                        r="155"
+                        fill="none"
+                        stroke="#FDFBF6" /* Adjusted to light cream */
+                        stroke-width="1"
+                        class="stardust-circle"
+                        stroke-dasharray="3 8"
+                        stroke-dashoffset="0"
+                    />
+
+                    <circle
+                        cx="200"
+                        cy="160"
+                        r="0"
+                        fill="url(#goldenAura)"
+                        class="golden-aura"
+                    />
+
+                    <text
+                        font-family="Lato, sans-serif"
+                        font-size="24"
+                        font-weight="bold"
+                        text-anchor="middle"
+                        fill="#D4AF37"
+                        class="u-slogan-text"
+                    >
+                        <textPath href="#uShapeSloganPath" startOffset="50%">
+                            Start Fresh Stay Inspired
+                        </textPath>
+                    </text>
+
+                    <text
+                        x="200"
+                        y="300"
+                        font-family="Inter, sans-serif"
+                        font-size="12"
+                        text-anchor="middle"
+                        fill="#D4AF37"
+                        class="est-1970-text"
+                    >
+                        EST 1970
+                    </text>
+                </svg>
+            </div>
+            <h1 class="hero-heading">Gozal Tea: Where Heritage Meets Harmony</h1>
+            <p class="hero-subheading">
+                Savor the timeless tradition of hand-picked, premium teas, meticulously crafted for your daily inspiration.
+            </p>
+            <a href="#products" class="inline-block explore-button">
+                Explore Our Exclusive Collection
+            </a>
+        </div>
+    </section>
+
+    <section id="heritage" class="content-section dark-bg">
+        <h2 class="section-heading">Our Heritage</h2>
+        <div class="text-lg leading-relaxed mb-4" lang="en">
+            Gozal Tea was established in the year 1970, with a simple idea to encourage the world to make a fresh start, every day. Synonymous with quality and culture, our range of widely loved products i.e. Leaf Teas, Green Teas, Fruit Teas, and Herbal Teas, are a testament to our commitment to excellence. With values that guide our decisions and actions, we remain true to our founder's vision - to simply make everyday better with a fresh cup of tea!
+            <p class="mt-4 font-semibold text-xl">Gozal Family</p>
+        </div>
+        <div class="text-lg leading-relaxed mt-8 rtl-text" lang="ar" dir="rtl">
+            منذ تأسيسها في عام 1970 انطلقت شركة جوزال تي بفكرة بسيطة وملهمة: تشجيع العالم على بداية جديدة كل يوم. أصبحت علامتنا التجارية مرادفا للجودة والثقافة، حيث نقدم مجموعة واسعة من المنتجات المحبوبة، بما في ذلك شاي الأوراق الفاخر، الشاي الأخضر، شاي الفاكهة، وشاي الأعشاب، والتي تعكس التزامنا الراسخ بالتميز. نحن نستلهم قيمنا الأساسية لتوجيه قراراتنا وأفعالنا مع البقاء أوفياء لرؤية مؤسسنا:
+            <p class="mt-4 font-semibold text-xl">جعل كل يوم أفضل مع كوب طازج من الشاي.</p>
+            <p class="mt-2 font-semibold text-xl">عائلة جوزال</p>
+        </div>
+    </section>
+
+    <section id="about" class="content-section">
+        <h2 class="section-heading">Our Journey: Cultivating Inspiration Since 1970</h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+            At Gozal Tea, we believe every day deserves a fresh start, a moment of pure inspiration. Our journey began in 1970 with a singular vision: to share the timeless art of tea making with the world.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+            From the pristine, hand-picked leaves nurtured in the finest gardens, to the meticulous crafting that honors vintage traditions, every Gozal blend is a testament to our unwavering commitment to quality and premium taste. We ensure each cup delivers an aromatic and naturally exquisite experience.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+            More than just a beverage, Gozal Tea is an invitation to infuse calmness into your day, to find clarity, and to truly 'Start Fresh, Stay Inspired.' It's a daily ritual designed for discerning palates and health-conscious souls alike.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed">
+            Behind every blend is the dedicated Gozal Family, passionate about bringing you the purest essence of tea, making everyday moments better, one cup at a time.
+        </p>
+        <!-- Suggested Visual Elements Integration:
+        <img src="path/to/your/tea-plantation-human-element.jpg" alt="Hands picking tea leaves" class="w-full h-auto rounded-lg my-8">
+        <div class="flex justify-center items-center gap-4 my-4">
+            <svg class="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>
+            <span class="text-gray-600">Hand-picked Excellence</span>
+            <svg class="w-8 h-8 text-yellow-600" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 100-6 3 3 0 000 6z"></path></svg>
+            <span class="text-gray-600">Premium Quality</span>
+        </div>
+        -->
+    </section>
+
+    <section id="products" class="content-section">
+        <h2 class="section-heading">Our Exquisite Teas</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div class="product-card">
+                <img src="IMG_0792.jpg" alt="Earl Grey Black Tea" class="mx-auto mb-6 rounded-lg">
+                <h3>Earl Grey Black Tea</h3>
+                <p>A classic blend infused with the fragrant essence of bergamot, offering a sophisticated and aromatic tea experience.</p>
+                <button>Learn More</button>
+            </div>
+            <div class="product-card">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwMCI vZmlld0JveD0iMCAwIDI1MCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8cmVjdCB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0ZERkJGNiIvPgogICAgPHBhdGggZD0iTTEyNSA1MCBDIDkwIDMwLCA1MCA3MCwgNzAgMTEwIEMgOTAgMTUwLCAxMjAgMTcwLCAxMjUgMTUwIEMgMTMwIDE3MCwgMTYwIDE1MCwgMTgwIDExMCBDIDIwMCA3MCwgMTYwIDMwLCAxMjUgNTAgWiIgZmlsbD0iIzFBNEMxNCIvPgogICAgPHBhdGggZD0iTTEyNSA1MCBMMTI1IDE1MCIgc3Ryb2tlPSIjRDRBRjM3IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPHBhdGggZD0iTTEyNSA2NSBMMTA1IDc1IiBzdHJva2U9IiNENEFGMzciIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8cGF0aCBkPSJNMTI1IDgwIEwxMDggOTAiIHN0cm9rZT0iI0Q0QUYzNyIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxwYXRoIGQ9Ik0xMjUgOTUgTDExMSAxMDUiIHN0cm9rZT0iI0Q0QUYzNyIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxwYXRoIGQ9Ik0xMjUgMTEwIEwxMTQgMTIwIiBzdHJva2U9IiNENEFGMzciIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8cGF0aCBkPSJNMTI1IDY1IEwxNDUgNzUiIHN0cm9rZT0iI0Q0QUYzNyIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxwYXRoIGQ9Ik0xMjUgODAgTDE0MiA5MCIgc3Ryb2tlPSIjRDRBRjM3IiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPHBhdGggZD0iTTEyNSA5NSBMMTM5IDEwNSIgc3Ryb2tlPSIjRDRBRjM3IiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPHBhdGggZD0iTTEyNSAxMTAgTDEzNiAxMjAiIHN0cm9rZT0iI0Q0QUYzNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPg==" alt="Small Leaf Black Tea" class="mx-auto mb-6 rounded-lg">
+                <h3>Small Leaf Black Tea</h3>
+                <p>Finely rolled leaves deliver a strong, brisk, and invigorating brew, perfect for a quick and flavorful pick-me-up.</p>
+                <button>Learn More</button>
+            </div>
+            <div class="product-card">
+                <img src="IMG_0793.jpg" alt="Pekoe Black Tea" class="mx-auto mb-6 rounded-lg">
+                <h3>Pekoe Black Tea</h3>
+                <p>Known for its rich flavor and smooth finish, this premium black tea offers a delightful and comforting cup.</p>
+                <button>Learn More</button>
+            </div>
+            <div class="product-card">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI1MCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8cmVjdCB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0ZERkJGNiIvPgogICAgPHJlY3QgeD0iNzUiIHk9IjYwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjkwIiByeD0iMTAiIGZpbGw9IiNBMDUyMkQiIHN0cm9rZT0iIzZCNDQyMyIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8bGluZSB4MT0iODUiIHkxPSI3NSIgeDI9IjE2NSIgeTI9Ijc1IiBzdHJva2U9IiM2QjQ0MjMiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxsaW5lIHgxPSI4NSIgeTE9IjkwIiB4Mj0iMTY1IiB5Mj0iOTAiIHN0cm9rZT0iIzZCNDQyMyIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPGxpbmUgeDE9Ijg1IiB5MT0iMTA1IiB4Mj0iMTY1IiB5Mj0iMTA1IiBzdHJva2U9IiM2QjQ0MjMiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxsaW5lIHgxPSI4NSIgeTE9IjEyMCIgeDI9IjE2NSIgeTI9IjEyMCIgc3Ryb2tlPSIjNkI0NDIzIiBzdHJva2Utd2lkdGg9IjAuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8bGluZSB4MT0iODUiIHkxPSIxMzUiIHgyPSIxNjUgeTI9IjEzNSIgc3Ryb2tlPSIjNkI0NDIzIiBzdHJva2Utd2lkdGg9IjAuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8bGluZSB4MT0iMTI1IiB5MT0iNjAiIHgyPSIxMjUiIHkyPSIzMCIgc3Ryb2tlPSIjRDRBRjM3IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPGNpcmNsZSBjeD0iMTI1IiBjeT0iMjIiIHJvPSIxMCIgZmlsbD0iI0Q0QUYzNyIvPgogICAgPHBhdGggZD0iTTEyNSAyMiBDIDEyMyAyMSwgMTIyIDIzLCAxMjQgMjQgQyAxMjYgMjUsIDEyNyAyMywgMTI1IDIyIFoiIGZpbGw9IiMxQTRDMTQiLz4KPC9zdmc+" alt="Gozal Tea Bag" class="mx-auto mb-6 rounded-lg">
+                <h3>Gozal Tea Bag</h3>
+                <p>Convenient and flavorful, our tea bags offer the same premium Gozal Tea quality for a quick and easy brew.</p>
+                <button>Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section dark-bg">
+        <h2 class="section-heading">Connect with Gozal Tea</h2>
+        <p class="text-lg text-center leading-relaxed mb-10">
+            We're here to assist you. Whether you have a question about our exquisite teas, a partnership inquiry, or simply wish to share your Gozal Tea experience, please reach out. Our dedicated team is committed to providing exceptional service and timely responses.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-3xl mx-auto">
+            <div class="bg-white p-10 rounded-lg shadow-xl contact-form">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Send Us a Message</h3>
+                <form id="contactForm" action="#" method="POST"> <input type="hidden" name="_replyto" value="rh3526572@gmail.com">
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 text-lg font-bold mb-2">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Your Full Name" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 text-lg font-bold mb-2">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email Address" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="mb-8">
+                        <label for="subject" class="block text-gray-700 text-lg font-bold mb-2">Subject:</label>
+                        <input type="text" id="subject" name="subject" placeholder="Subject of your Inquiry" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="mb-8">
+                        <label for="message" class="block text-gray-700 text-lg font-bold mb-2">Message:</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Your Message" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></textarea>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <button type="submit" class="text-white font-bold py-3 px-8">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+                <div id="formSuccessMessage" class="success-message hidden">
+                    Thank you for your message! We've received your inquiry and will be in touch shortly.
+                </div>
+            </div>
+
+            <div class="bg-white p-10 rounded-lg shadow-xl contact-details-section">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Our Details</h3>
+                <p class="text-lg text-gray-700 leading-relaxed mb-4">Prefer to connect directly? Find our details below for immediate assistance.</p>
+                <p class="mb-2 font-semibold text-gray-800">Wellington Marketing FZE</p>
+                <p class="mb-2 text-gray-700">P.O.BOX: 17948, Dubai, UAE</p>
+                <p class="mb-2 text-gray-700">Email: <a href="mailto:info@gozaltea.com" class="text-yellow-600 hover:underline">info@gozaltea.com</a></p>
+                <p class="mb-6 text-gray-700">Website: <a href="http://www.gozaltea.com" target="_blank" class="text-yellow-600 hover:underline">www.gozaltea.com</a></p>
+
+                <div class="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 mb-6">
+                    [Google Map Placeholder]
+                    <!-- A live Google Map embed would go here, e.g.:
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1dYOUR_LATITUDE!2dYOUR_LONGITUDE!3dYOUR_ZOOM!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zYOUR_BUSINESS_NAME!5e0!3m2!1sen!2sus!4v1678901234567!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    -->
+                </div>
+
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="#" class="text-gray-700 hover:text-yellow-600 transition-colors duration-300">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 2.25h9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75h-9a.75.75 0 01-.75-.75V3a.75.75 0 01.75-.75zM12 18.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path></svg>
+                    </a>
+                    <a href="#" class="text-gray-700 hover:text-yellow-600 transition-colors duration-300">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.5 8.25h-2.5v-1.5c0-.414.336-.75.75-.75h1.75V6.5h-2.5c-1.243 0-2.25 1.007-2.25 2.25v1.5h-1.5v2.5h1.5v6.5h2.5v-6.5h1.5l.5-2.5z"></path></svg>
+                    </a>
+                    </div>
+
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Frequently Asked Questions</h3>
+                <div class="space-y-4 text-left">
+                    <details class="group bg-gray-50 p-4 rounded-lg shadow-sm cursor-pointer">
+                        <summary class="flex justify-between items-center font-semibold text-gray-700">
+                            Where can I purchase Gozal Tea?
+                            <span class="transform transition-transform duration-200 group-open:rotate-180">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="mt-2 text-gray-600">Gozal Tea is available through our official website and select premium retailers. Please check our 'Products' section for more details or contact us for a list of distributors.</p>
+                    </details>
+                    <details class="group bg-gray-50 p-4 rounded-lg shadow-sm cursor-pointer">
+                        <summary class="flex justify-between items-center font-semibold text-gray-700">
+                            Do you offer wholesale options?
+                            <span class="transform transition-transform duration-200 group-open:rotate-180">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="mt-2 text-gray-600">Yes, we offer wholesale pricing for businesses interested in carrying Gozal Tea. Please use the contact form above to inquire about wholesale opportunities, and our team will get back to you.</p>
+                    </details>
+                    <details class="group bg-gray-50 p-4 rounded-lg shadow-sm cursor-pointer">
+                        <summary class="flex justify-between items-center font-semibold text-gray-700">
+                            What are your shipping policies?
+                            <span class="transform transition-transform duration-200 group-open:rotate-180">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="mt-2 text-gray-600">We strive to process all orders within 1-2 business days. Shipping times and costs vary depending on your location. Detailed information on our shipping policies can be found during checkout or by contacting us directly.</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <p>© 2023 Gozal Tea by Wellington Marketing FZE. All rights reserved.</p>
+        <p class="text-base mt-2">Start Fresh. Stay Inspired.</p>
+    </footer>
+
+    <script>
+        // JavaScript for parallax scroll effect on the image background
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroImageContainer = document.querySelector('.hero-image-container');
+            const heroSection = document.getElementById('home');
+
+            if (heroImageContainer && heroSection) {
+                window.addEventListener('scroll', function() {
+                    const scrollPosition = window.pageYOffset;
+                    // Adjust the parallax speed by changing the division factor
+                    // A smaller number makes the effect more pronounced
+                    heroImageContainer.style.transform = `translateZ(-1px) scale(2) translateY(${scrollPosition * 0.3}px)`;
+                });
+            }
+
+            // --- Contact Form Submission Handling ---
+            const contactForm = document.getElementById('contactForm');
+            const formSuccessMessage = document.getElementById('formSuccessMessage');
+
+            if (contactForm && formSuccessMessage) {
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent default form submission
+
+                    // In a real application, you would send the form data to a server here.
+                    // For demonstration, we'll just simulate a successful submission.
+                    console.log('Form submitted!');
+                    // Access form data:
+                    // const formData = new FormData(contactForm);
+                    // for (let [key, value] = formData.entries()) {
+                    //     console.log(`${key}: ${value}`);
+                    // }
+
+                    // Display success message
+                    formSuccessMessage.classList.remove('hidden');
+                    contactForm.reset(); // Clear the form fields
+
+                    // Optionally hide the message after a few seconds
+                    setTimeout(() => {
+                        formSuccessMessage.classList.add('hidden');
+                    }, 5000); // Hide after 5 seconds
+                });
+            }
+        });
+    </script>
+</body>
+</html>
