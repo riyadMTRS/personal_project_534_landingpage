@@ -403,6 +403,8 @@
             transform: scale(0.9);
             animation: heroLogoScaleIn 1.5s ease-out forwards;
             animation-delay: 1.5s;
+            width: 100%; /* Ensure it takes full width */
+            max-width: 448px; /* Default max-width for larger screens */
         }
 
         /* Adjust SVG colors for dark background */
@@ -701,6 +703,49 @@
                 padding: 2rem 1rem;
                 font-size: 0.85rem;
             }
+
+            /* SVG specific mobile adjustments */
+            .hero-section .svg-container {
+                max-width: 100%; /* Ensure it always takes full width on small screens */
+            }
+            .hero-section .gozal-tea-straight-text {
+                font-size: 30px; /* Smaller font size for mobile */
+            }
+            .hero-section .wellington-text {
+                font-size: 14px; /* Smaller font size for mobile */
+                y: 215; /* Adjusted Y position for mobile */
+            }
+            .hero-section .u-slogan-text {
+                font-size: 18px; /* Smaller font size for mobile */
+            }
+            .hero-section .est-1970-text {
+                font-size: 9px; /* Even smaller font size for mobile */
+                y: 245; /* Adjusted Y position for EST 1970 on mobile */
+            }
+            /* Adjust the path for the U-shaped slogan for mobile */
+            #uShapeSloganPath {
+                d: "M 70 225 Q 200 265 330 225"; /* Slightly less deep curve if text is smaller */
+            }
+        }
+
+        @media (max-width: 480px) { /* Even smaller phones */
+            .hero-section .gozal-tea-straight-text {
+                font-size: 25px;
+            }
+            .hero-section .wellington-text {
+                font-size: 12px;
+                y: 210; /* Further adjustment for very small screens */
+            }
+            .hero-section .u-slogan-text {
+                font-size: 16px;
+            }
+            .hero-section .est-1970-text {
+                font-size: 8px;
+                y: 240; /* Further adjustment for very small screens */
+            }
+            #uShapeSloganPath {
+                d: "M 70 220 Q 200 255 330 220"; /* Further adjustment to curve for very small screens */
+            }
         }
     </style>
 </head>
@@ -727,7 +772,7 @@
         </div>
 
         <div class="max-w-6xl mx-auto px-4 hero-content">
-            <div class="relative w-full max-w-md mx-auto mb-1 svg-container">
+            <div class="relative w-full mx-auto mb-1 svg-container">
                 <svg
                     viewBox="0 0 400 480"
                     class="w-full h-auto"
@@ -740,7 +785,7 @@
                             <stop offset="100%" stop-color="rgba(212, 175, 55, 0)" />
                         </radialGradient>
                         <path id="gozalTeaStraightPath" d="M 70 195 L 330 195" fill="none" />
-                        <path id="uShapeSloganPath" d="M 70 230 Q 200 295 330 230" fill="none" />
+                        <path id="uShapeSloganPath" d="M 70 240 Q 200 280 330 240" fill="none" />
                     </defs>
 
                     <g class="gozal-seal" transform-origin="200px 80px" transform="scale(0.5) translate(0, -10)">
@@ -775,7 +820,7 @@
 
                     <text
                         x="200"
-                        y="240"
+                        y="225"
                         font-family="Lato Light, sans-serif"
                         font-size="20"
                         text-anchor="middle"
@@ -832,7 +877,7 @@
 
                     <text
                         x="200"
-                        y="300"
+                        y="265"
                         font-family="Inter, sans-serif"
                         font-size="12"
                         text-anchor="middle"
